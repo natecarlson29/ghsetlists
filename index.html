@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nate's GH Hub</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Nate's GH Hub</h1>
+            <p class="subtitle">Guitar Hero Song Browserz</p>
+        </header>
+
+        <div class="search-container">
+            <input
+                type="text"
+                id="search-input"
+                class="search-input"
+                placeholder="Search songs, artists"
+                autocomplete="off"
+            >
+            <span class="song-count" id="song-count"></span>
+        </div>
+
+        <div class="controls">
+            <div class="filter-group">
+                <span class="control-label">Filter:</span>
+                <div class="filter-buttons" id="filter-buttons">
+                    <button class="filter-btn active" data-game="ALL">All</button>
+                    <button class="filter-btn" data-game="RB">RB</button>
+                    <button class="filter-btn" data-game="GH2">GH2</button>
+                    <button class="filter-btn" data-game="GH3">GH3</button>
+                    <button class="filter-btn" data-game="GHWT">GHWT</button>
+                </div>
+            </div>
+            <div class="sort-group">
+                <span class="control-label">Sort:</span>
+                <select id="sort-select" class="sort-select">
+                    <option value="artist">Artist A-Z</option>
+                    <option value="title">Song Name A-Z</option>
+                </select>
+            </div>
+        </div>
+
+        <main class="song-list" id="song-list">
+            <!-- Songs will be rendered here by JavaScript -->
+        </main>
+    </div>
+
+    <script src="songs.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

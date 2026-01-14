@@ -1,0 +1,455 @@
+/* CSS Variables */
+:root {
+    --color-rb: #E31837;
+    --color-gh2: #FF6B00;
+    --color-gh3: #FFD700;
+    --color-ghwt: #00A3E0;
+    --bg-dark: #0a0a0a;
+    --bg-card: rgba(20, 20, 20, 0.85);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --flame-orange: #FF6B00;
+    --flame-yellow: #FFD700;
+    --flame-red: #FF2D00;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at bottom, rgba(255, 107, 0, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at top left, rgba(255, 45, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at top right, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    background-attachment: fixed;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--flame-orange), var(--flame-yellow), var(--flame-orange), transparent);
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--flame-orange), var(--flame-yellow), var(--flame-orange), transparent);
+}
+
+.title {
+    font-family: 'Metal Mania', cursive;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    background: linear-gradient(180deg, #fff 0%, var(--flame-yellow) 50%, var(--flame-orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 107, 0, 0.5);
+    filter: drop-shadow(0 0 20px rgba(255, 107, 0, 0.3));
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Search */
+.search-container {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    background: rgba(30, 30, 30, 0.9);
+    border: 2px solid rgba(255, 107, 0, 0.3);
+    border-radius: 8px;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-input:focus {
+    border-color: var(--flame-orange);
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.3), inset 0 0 10px rgba(255, 107, 0, 0.1);
+}
+
+.song-count {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    background: rgba(20, 20, 20, 0.6);
+    border-radius: 8px;
+}
+
+.filter-group,
+.sort-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.control-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.filter-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(40, 40, 40, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(60, 60, 60, 0.9);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background: var(--flame-orange);
+    border-color: var(--flame-orange);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+}
+
+.filter-btn[data-game="RB"].active {
+    background: var(--color-rb);
+    border-color: var(--color-rb);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(227, 24, 55, 0.4);
+}
+
+.filter-btn[data-game="GH2"].active {
+    background: var(--color-gh2);
+    border-color: var(--color-gh2);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+}
+
+.filter-btn[data-game="GH3"].active {
+    background: var(--color-gh3);
+    border-color: var(--color-gh3);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.filter-btn[data-game="GHWT"].active {
+    background: var(--color-ghwt);
+    border-color: var(--color-ghwt);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 163, 224, 0.4);
+}
+
+.sort-select {
+    padding: 8px 30px 8px 12px;
+    font-size: 0.85rem;
+    font-family: 'Roboto', sans-serif;
+    background: rgba(40, 40, 40, 0.8);
+    border: 2px solid rgba(255, 107, 0, 0.3);
+    border-radius: 4px;
+    color: var(--text-primary);
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FF6B00' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    transition: all 0.2s ease;
+}
+
+.sort-select:hover,
+.sort-select:focus {
+    border-color: var(--flame-orange);
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+}
+
+.sort-select option {
+    background: #1a1a1a;
+    color: var(--text-primary);
+}
+
+/* Badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-rb {
+    background: var(--color-rb);
+    box-shadow: 0 0 10px rgba(227, 24, 55, 0.5);
+}
+
+.badge-gh2 {
+    background: var(--color-gh2);
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+.badge-gh3 {
+    background: var(--color-gh3);
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.badge-ghwt {
+    background: var(--color-ghwt);
+    box-shadow: 0 0 10px rgba(0, 163, 224, 0.5);
+}
+
+/* Song List */
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Song Row - Rock Band Setlist Style */
+.song-row {
+    display: grid;
+    grid-template-columns: 55px 1fr auto;
+    gap: 15px;
+    align-items: center;
+    padding: 12px 15px;
+    background: var(--bg-card);
+    border-left: 4px solid transparent;
+    border-radius: 2px;
+    transform: skewX(-1deg);
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+.song-row:hover {
+    background: rgba(40, 40, 40, 0.95);
+    transform: skewX(-1deg) translateX(5px);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.2);
+}
+
+/* Game-specific borders */
+.song-row[data-game="RB"] {
+    border-left-color: var(--color-rb);
+}
+
+.song-row[data-game="GH2"] {
+    border-left-color: var(--color-gh2);
+}
+
+.song-row[data-game="GH3"] {
+    border-left-color: var(--color-gh3);
+}
+
+.song-row[data-game="GHWT"] {
+    border-left-color: var(--color-ghwt);
+}
+
+.song-row:hover[data-game="RB"] {
+    box-shadow: 0 0 15px rgba(227, 24, 55, 0.3);
+}
+
+.song-row:hover[data-game="GH2"] {
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+}
+
+.song-row:hover[data-game="GH3"] {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.song-row:hover[data-game="GHWT"] {
+    box-shadow: 0 0 15px rgba(0, 163, 224, 0.3);
+}
+
+/* Song Info */
+.song-info {
+    transform: skewX(1deg);
+    overflow: hidden;
+}
+
+.song-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-artist {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+}
+
+.song-badge {
+    transform: skewX(1deg);
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.no-results h3 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 1.5rem;
+    color: var(--flame-orange);
+    margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 30px 10px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 15px;
+        padding: 12px 15px;
+    }
+
+    .filter-group,
+    .sort-group {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filter-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .song-row {
+        grid-template-columns: 45px 1fr;
+        padding: 10px 12px;
+        transform: skewX(0);
+    }
+
+    .song-row:hover {
+        transform: skewX(0) translateX(3px);
+    }
+
+    .song-info, .song-badge {
+        transform: skewX(0);
+    }
+
+    .badge {
+        min-width: 40px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--flame-orange), var(--flame-red));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--flame-yellow), var(--flame-orange));
+}
