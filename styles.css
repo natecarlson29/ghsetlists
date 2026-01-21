@@ -1,6 +1,8 @@
 /* CSS Variables */
 :root {
+    --color-gh: #8B0000;
     --color-rb: #E31837;
+    --color-rb2: #FF1493;
     --color-gh2: #FF6B00;
     --color-gh3: #FFD700;
     --color-ghwt: #00A3E0;
@@ -188,11 +190,25 @@ body {
     box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
 }
 
+.filter-btn[data-game="GH"].active {
+    background: var(--color-gh);
+    border-color: var(--color-gh);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+}
+
 .filter-btn[data-game="RB"].active {
     background: var(--color-rb);
     border-color: var(--color-rb);
     color: #fff;
     box-shadow: 0 0 15px rgba(227, 24, 55, 0.4);
+}
+
+.filter-btn[data-game="RB2"].active {
+    background: var(--color-rb2);
+    border-color: var(--color-rb2);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.4);
 }
 
 .filter-btn[data-game="GH2"].active {
@@ -258,9 +274,19 @@ body {
     letter-spacing: 0.5px;
 }
 
+.badge-gh {
+    background: var(--color-gh);
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
 .badge-rb {
     background: var(--color-rb);
     box-shadow: 0 0 10px rgba(227, 24, 55, 0.5);
+}
+
+.badge-rb2 {
+    background: var(--color-rb2);
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
 }
 
 .badge-gh2 {
@@ -309,8 +335,16 @@ body {
 }
 
 /* Game-specific borders */
+.song-row[data-game="GH"] {
+    border-left-color: var(--color-gh);
+}
+
 .song-row[data-game="RB"] {
     border-left-color: var(--color-rb);
+}
+
+.song-row[data-game="RB2"] {
+    border-left-color: var(--color-rb2);
 }
 
 .song-row[data-game="GH2"] {
@@ -325,8 +359,16 @@ body {
     border-left-color: var(--color-ghwt);
 }
 
+.song-row:hover[data-game="GH"] {
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+}
+
 .song-row:hover[data-game="RB"] {
     box-shadow: 0 0 15px rgba(227, 24, 55, 0.3);
+}
+
+.song-row:hover[data-game="RB2"] {
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
 }
 
 .song-row:hover[data-game="GH2"] {
@@ -426,7 +468,8 @@ body {
         transform: skewX(0) translateX(3px);
     }
 
-    .song-info, .song-badge {
+    .song-info,
+    .song-badge {
         transform: skewX(0);
     }
 

@@ -61,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Also match full game names
             const gameNames = {
+                'gh': ['guitar hero', 'guitarhero'],
                 'rb': ['rock band', 'rockband'],
+                'rb2': ['rock band 2', 'rockband2', 'rock band ii'],
                 'gh2': ['guitar hero 2', 'guitar hero ii', 'guitarhero2'],
                 'gh3': ['guitar hero 3', 'guitar hero iii', 'guitarhero3', 'legends of rock'],
                 'ghwt': ['guitar hero world tour', 'world tour', 'guitarheroworld']
